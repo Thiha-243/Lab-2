@@ -24,16 +24,34 @@ def find_min_max(list):
 
 def sort_temperature(list):
     print("sort_temperature")
+    for i in range(len(list)):
+        for j in range(len(list) - 1):
+            if list[j] > list[j+1]:
+                list[j] , list [j+1] = list [j+1] , list[j]
+    print(list)
+    
+    return(list)
     
 
-def calc_median_temperature():
+def calc_median_temperature(sorted):
     print("calc_median_temperature")
+    if len(sorted)%2 != 0:
+        middle = len(sorted)//2 
+        sorted_list = sorted[middle] 
+        print("Median number is " + str(sorted_list))
+    
+    elif len(sorted)%2 == 0:
+        middle1 = len(sorted)//2 - 1
+        middle2 = len(sorted)//2
+
+        print("Median number is " + str((sorted[middle1]+ sorted[middle2])/2))
 
 def main():
     list = get_user_input()
     calc_average(list)
     find_min_max(list)
-    sort_temperature(list)
+    sorted = sort_temperature(list)
+    calc_median_temperature(sorted)
 
 if __name__ == "__main__":
     main()
